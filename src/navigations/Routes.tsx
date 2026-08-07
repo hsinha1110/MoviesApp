@@ -1,0 +1,11 @@
+const Routes = {
+  HOME: 'HOME',
+  MOVIE_DETAILS: 'MOVIE_DETAILS',
+  TRAILER: 'TRAILER',
+  SEARCH: 'SEARCH',
+  FAVOURITES: 'FAVOURITES',
+  DOWNLOADS: 'DOWNLOADS',
+  MAIN_TABS: 'MAIN_TABS',
+} as const;
+
+export default Routes;
