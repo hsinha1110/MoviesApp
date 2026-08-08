@@ -1,9 +1,17 @@
+
+
+
+
+
 # 🎬 Movies App
 
 A modern movie discovery mobile application built with React Native and TypeScript using The Movie Database (TMDB) API.
 
 The app allows users to discover movies, view detailed movie information, explore genres, ratings, release dates, production companies, and watch movie trailers.
 
+## 📱 App Demo
+
+https://github.com/user-attachments/assets/e708b94e-6717-4fa5-a247-412b4023aa97
 
 
 ## 📱 Features
