@@ -13,6 +13,7 @@ const useStyles = () => {
           borderRadius: moderateScale(12),
           backgroundColor: '#fff',
           height: moderateScale(280),
+
           elevation: moderateScale(6),
 
           shadowColor: '#000',
@@ -25,26 +26,46 @@ const useStyles = () => {
         },
 
         card: {
+          width: moderateScale(160),
           backgroundColor: '#fff',
           borderRadius: moderateScale(12),
           overflow: 'hidden',
+          marginRight: moderateScale(14),
+          marginBottom: moderateScale(14),
+        },
+        posterContainer: {
+          position: 'relative',
+          width: '100%',
         },
 
         poster: {
           width: '100%',
-          height: moderateScale(200), // 220 -> 200
+          height: moderateScale(200),
+        },
+
+        heartButton: {
+          position: 'absolute',
+          top: moderateScale(8),
+          right: moderateScale(8),
+          width: moderateScale(36),
+          height: moderateScale(36),
+          borderRadius: moderateScale(18),
+          backgroundColor: 'rgba(0,0,0,0.65)',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 10,
         },
 
         content: {
           paddingHorizontal: moderateScale(10),
-          paddingVertical: moderateScale(8), // 10 -> 8
+          paddingVertical: moderateScale(8),
         },
 
         title: {
           fontSize: moderateScale(15),
           fontWeight: '700',
           color: '#222',
-          height: moderateScale(38), // 42 -> 38
+          height: moderateScale(38),
         },
 
         row: {

@@ -20,8 +20,7 @@ import { ArrowDownTrayIcon } from 'react-native-heroicons/outline';
 import useStyles from './styles';
 import AppButton from '../../components/button/AppButton';
 import MoviesCard from '../../components/card/MoviesCard';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { MainStackParamList } from '../../navigations/types';
+import { useTheme } from '../../theme/useTheme';
 import { useNavigation } from '@react-navigation/native';
 import Routes from '../../navigations/Routes';
 
@@ -50,8 +49,8 @@ const HomeScreen = () => {
   useEffect(() => {
     fetchUpcomingMovies();
   }, [pages]);
-
-  const styles = useStyles();
+  const { theme } = useTheme();
+  const styles = useStyles(theme);
 
   // Popular Movies
   const fetchPopularMovies = async () => {

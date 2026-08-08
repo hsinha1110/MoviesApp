@@ -2,20 +2,19 @@ import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import { moderateScale } from '../../styles/scaling';
 
-const useStyles = () => {
+const useStyles = (theme: any) => {
   return useMemo(
     () =>
       StyleSheet.create({
         container: {
           flex: 1,
-          backgroundColor: '#fff',
+          backgroundColor: theme.background,
         },
-
         loaderContainer: {
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: '#fff',
+          backgroundColor: theme.background,
         },
 
         errorContainer: {
@@ -23,20 +22,20 @@ const useStyles = () => {
           justifyContent: 'center',
           alignItems: 'center',
           paddingHorizontal: moderateScale(20),
-          backgroundColor: '#fff',
+          backgroundColor: theme.background,
         },
 
         errorText: {
           fontSize: moderateScale(16),
-          color: 'red',
+          color: theme.primary,
           fontWeight: '600',
           textAlign: 'center',
         },
 
         heading: {
-          fontSize: moderateScale(22), 
+          fontSize: moderateScale(22),
           fontWeight: '700',
-          color: '#000',
+          color: theme.text,
           marginHorizontal: moderateScale(16),
           marginTop: moderateScale(20),
           marginBottom: moderateScale(12),
@@ -84,7 +83,7 @@ const useStyles = () => {
         playButton: {
           flex: 1,
           height: moderateScale(48),
-          backgroundColor: '#E50914',
+          backgroundColor: theme.primary,
           borderRadius: moderateScale(8),
           justifyContent: 'center',
           alignItems: 'center',
@@ -94,17 +93,20 @@ const useStyles = () => {
         downloadButton: {
           flex: 1,
           height: moderateScale(48),
-          backgroundColor: '#3A3A3A',
+          backgroundColor: theme.card,
           borderRadius: moderateScale(8),
           justifyContent: 'center',
           alignItems: 'center',
           marginLeft: moderateScale(10),
+          borderWidth: StyleSheet.hairlineWidth,
+          borderColor: theme.border,
         },
+
         contentStyle: {
           paddingHorizontal: moderateScale(12),
         },
       }),
-    [],
+    [theme],
   );
 };
 

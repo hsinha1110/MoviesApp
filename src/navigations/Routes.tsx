@@ -6,6 +6,7 @@ const Routes = {
   FAVOURITES: 'FAVOURITES',
   DOWNLOADS: 'DOWNLOADS',
   MAIN_TABS: 'MAIN_TABS',
+  SETTINGS: 'SETTINGS',
 } as const;
 
 export default Routes;

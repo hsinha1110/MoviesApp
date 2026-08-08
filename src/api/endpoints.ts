@@ -21,7 +21,4 @@ export const ENDPOINTS = {
     `/movie/${id}/similar?language=en-US&page=${page}`,
 
   VIDEOS: (id: number) => `/movie/${id}/videos?language=en-US`,
-
-  REVIEWS: (id: number, page: number = 1) =>
-    `/movie/${id}/reviews?language=en-US&page=${page}`,
 };

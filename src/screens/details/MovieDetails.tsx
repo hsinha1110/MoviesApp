@@ -7,6 +7,7 @@ import { getMovieDetails } from '../../api/movieService';
 import { TouchableOpacity, Linking, Alert } from 'react-native';
 import { PlayIcon } from 'react-native-heroicons/solid';
 import { getMovieVideos } from '../../api/movieService';
+import { BlurView } from '@react-native-community/blur';
 import useStyles from './styles';
 
 type Props = NativeStackScreenProps<MainStackParamList, 'MOVIE_DETAILS'>;
@@ -78,13 +79,20 @@ const MovieDetails: FC<Props> = ({ route }) => {
   return (
     <SafeAreaView edges={['left', 'right', 'bottom']} style={styles.container}>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-        {/* Backdrop */}
-        <Image
-          source={{
-            uri: `${IMAGE_URL}${movie.backdrop_path}`,
-          }}
-          style={styles.backdrop}
-        />
+        <View style={styles.backdropContainer}>
+          <Image
+            source={{ uri: `${IMAGE_URL}${movie.backdrop_path}` }}
+            style={styles.backdrop}
+          />
+          <BlurView
+            style={styles.blurView}
+            blurType="light"
+            blurAmount={4}
+            reducedTransparencyFallbackColor="#000"
+          />
+
+          <View style={styles.darkOverlay} />
+        </View>
 
         {/* Poster + Info */}
         <View style={styles.header}>

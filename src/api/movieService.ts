@@ -23,10 +23,6 @@ export const getMovieDetails = (id: number) => {
   return api(ENDPOINTS.MOVIE_DETAILS(id));
 };
 
-
-export const getMovieReviews = (id: number, page: number = 1) => {
-  return api(ENDPOINTS.REVIEWS(id, page));
-};
 export const getMovieVideos = (id: number) => {
   return api(ENDPOINTS.VIDEOS(id));
 };
