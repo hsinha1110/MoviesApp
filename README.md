@@ -4,11 +4,6 @@ A modern movie discovery mobile application built with React Native and TypeScri
 
 The app allows users to discover movies, view detailed movie information, explore genres, ratings, release dates, production companies, and watch movie trailers.
 
-App Demo 
-[
-https://github.com/user-attachments/assets/927328db-71a5-4121-962a-891e628d08c5
-](url)
----
 
 ## 📱 Features
 
