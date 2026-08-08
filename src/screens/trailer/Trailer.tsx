@@ -1,58 +1,85 @@
-import React, { useEffect } from 'react';
-import { ActivityIndicator, Alert, Linking, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, Alert, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import YoutubePlayer from 'react-native-youtube-iframe';
+
 import { MainStackParamList } from '../../navigations/types';
 import { getMovieVideos } from '../../api/movieService';
 
 type Props = NativeStackScreenProps<MainStackParamList, 'TRAILER'>;
 
-const Trailer = ({ route, navigation }: Props) => {
+const Trailer = ({ route }: Props) => {
   const { movieId } = route.params;
 
+  const [videoKey, setVideoKey] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    openTrailer();
-  }, []);
+    const loadTrailer = async () => {
+      try {
+        const response = await getMovieVideos(movieId);
 
-  const openTrailer = async () => {
-    try {
-      const data = await getMovieVideos(movieId);
+        console.log('VIDEOS:', response);
 
-      const youtubeVideo =
-        data.results.find(
-          (item: any) => item.site === 'YouTube' && item.type === 'Trailer',
-        ) ||
-        data.results.find(
-          (item: any) => item.site === 'YouTube' && item.type === 'Teaser',
-        ) ||
-        data.results.find((item: any) => item.site === 'YouTube');
+        const trailer = response?.results?.find(
+          (video: any) =>
+            video.site === 'YouTube' && video.type === 'Trailer' && video.key,
+        );
 
-      if (!youtubeVideo) {
-        Alert.alert('Trailer', 'No trailer available');
-        navigation.goBack();
-        return;
+        if (!trailer) {
+          Alert.alert('Trailer not found');
+          return;
+        }
+
+        console.log('YOUTUBE KEY:', trailer.key);
+
+        setVideoKey(trailer.key);
+      } catch (error) {
+        console.error('Trailer Error:', error);
+        Alert.alert('Error', 'Trailer load nahi ho saka.');
+      } finally {
+        setLoading(false);
       }
+    };
 
-      const url = `https://www.youtube.com/watch?v=${youtubeVideo.key}`;
+    loadTrailer();
+  }, [movieId]);
 
-      await Linking.openURL(url);
+  if (loading) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: '#000',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <ActivityIndicator size="large" color="#fff" />
+      </View>
+    );
+  }
 
-      navigation.goBack();
-    } catch (error) {
-      console.log(error);
-      Alert.alert('Error', 'Something went wrong');
-      navigation.goBack();
-    }
-  };
+  if (!videoKey) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: '#000',
+        }}
+      />
+    );
+  }
 
   return (
     <View
       style={{
         flex: 1,
+        backgroundColor: '#000',
         justifyContent: 'center',
-        alignItems: 'center',
       }}
     >
-      <ActivityIndicator size="large" />
+      <YoutubePlayer height={250} play={true} videoId={videoKey} />
     </View>
   );
 };

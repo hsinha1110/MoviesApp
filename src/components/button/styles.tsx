@@ -1,23 +1,25 @@
 import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
+import { moderateScale } from '../../styles/scaling';
 
-const useStyles = () => {
+const useStyles = (theme: any) => {
   return useMemo(
     () =>
       StyleSheet.create({
         button: {
-          height: 48,
-          backgroundColor: '#E50914',
-          borderRadius: 8,
+          height: moderateScale(48),
+          backgroundColor: theme.primary,
+          borderRadius: moderateScale(8),
           justifyContent: 'center',
           alignItems: 'center',
-          paddingHorizontal: 20,
+          paddingHorizontal: moderateScale(20),
         },
 
         title: {
-          color: '#fff',
-          fontSize: 16,
+          color: theme.text,
+          fontSize: moderateScale(16),
           fontWeight: '700',
+          marginHorizontal: moderateScale(10),
         },
 
         pressed: {
@@ -27,6 +29,7 @@ const useStyles = () => {
         disabled: {
           opacity: 0.5,
         },
+
         content: {
           flexDirection: 'row',
           alignItems: 'center',
@@ -34,12 +37,12 @@ const useStyles = () => {
         },
 
         icon: {
-          marginRight: 8,
+          marginRight: moderateScale(8),
           alignItems: 'center',
           justifyContent: 'center',
         },
       }),
-    [],
+    [theme],
   );
 };
 

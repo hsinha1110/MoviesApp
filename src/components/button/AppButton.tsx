@@ -1,7 +1,9 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Pressable, Text, ActivityIndicator, View } from 'react-native';
+
 import useStyles from './styles';
-import { AppButtonProps } from '../../types';
+import { AppButtonProps } from '../types';
+import { useTheme } from '../../theme/useTheme';
 
 const AppButton = ({
   title,
@@ -12,7 +14,8 @@ const AppButton = ({
   textStyle,
   leftIcon,
 }: AppButtonProps) => {
-  const styles = useStyles();
+  const { theme } = useTheme();
+  const styles = useStyles(theme);
 
   return (
     <Pressable
@@ -26,12 +29,14 @@ const AppButton = ({
       ]}
     >
       {loading ? (
-        <ActivityIndicator color="#fff" />
+        <ActivityIndicator color={theme.text} />
       ) : (
         <View style={styles.content}>
-          {leftIcon && <View style={styles.icon}>{leftIcon}</View>}
+          {leftIcon && leftIcon}
 
-          <Text style={[styles.title, textStyle]}>{title}</Text>
+          <Text style={[styles.title, textStyle]}>
+            {title}
+          </Text>
         </View>
       )}
     </Pressable>

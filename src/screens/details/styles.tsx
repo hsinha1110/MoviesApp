@@ -102,7 +102,12 @@ const useStyles = () => {
           alignItems: 'center',
           flexDirection: 'row',
         },
-
+        loaderContainer: {
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#000',
+        },
         trailerText: {
           color: '#fff',
           fontSize: moderateScale(16),

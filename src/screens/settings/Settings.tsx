@@ -4,7 +4,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import {
   MoonIcon,
-  LanguageIcon,
   ShieldCheckIcon,
   InformationCircleIcon,
   DocumentTextIcon,

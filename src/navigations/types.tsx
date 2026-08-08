@@ -1,5 +1,5 @@
 export type MainStackParamList = {
-  MAIN_TABS: undefined;
+  HOME: undefined;
 
   MOVIE_DETAILS: {
     movieId: number;
@@ -8,6 +8,7 @@ export type MainStackParamList = {
   TRAILER: {
     movieId: number;
   };
+  MAIN_TABS: undefined;
 };
 
 export type BottomTabParamList = {
@@ -15,4 +16,5 @@ export type BottomTabParamList = {
   SEARCH: undefined;
   FAVOURITES: undefined;
   DOWNLOADS: undefined;
+  SETTINGS: undefined;
 };

@@ -51,7 +51,6 @@ const Search = () => {
   if (loading) {
     return (
       <SafeAreaView style={styles.loaderContainer}>
-        {' '}
         <ActivityIndicator size="large" color={theme.primary} />
       </SafeAreaView>
     );
